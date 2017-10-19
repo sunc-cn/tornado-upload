@@ -22,9 +22,9 @@ class UploadHandler(tornado.web.RequestHandler):
         extension = os.path.splitext(original_fname)[1]
         fname = ''.join(random.choice(string.ascii_lowercase + string.digits) for x in range(6))
         final_filename= fname+extension
-        output_file = open("uploads/" + final_filename, 'w')
+        output_file = open("uploads/" + final_filename, 'wb')
         output_file.write(file1['body'])
-        self.finish("file" + final_filename + " is uploaded")
+        self.finish("" + final_filename + " is uploaded")
         
 def main():
     http_server = tornado.httpserver.HTTPServer(Application())
